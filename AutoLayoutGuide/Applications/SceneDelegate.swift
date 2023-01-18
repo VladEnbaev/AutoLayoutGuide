@@ -13,10 +13,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(frame: windowScene.screen.bounds)
+        window?.windowScene = windowScene
+        
+        let constraintVC = ConstraintVC()
+        let anchorsVC = AnchorsVC()
+        let vflVC = VisualFormatLanguageVC()
+        let stackViewVC = StackViewVC()
+        
+        anchorsVC.tabBarItem = UITabBarItem(title: "Anchors", image: UIImage(systemName: "command"), tag: 1)
+        constraintVC.tabBarItem = UITabBarItem(title: "Constraints", image: UIImage(systemName: "command"), tag: 1)
+        vflVC.tabBarItem = UITabBarItem(title: "VFL", image: UIImage(systemName: "command"), tag: 2)
+        stackViewVC.tabBarItem = UITabBarItem(title: "StackView", image: UIImage(systemName: "command"), tag: 3)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.layer.masksToBounds = true
+        
+        tabBarController.setViewControllers([anchorsVC, constraintVC, vflVC, stackViewVC], animated: true)
+        
+        //tabBarController.tabBar.backgroundColor = .systemGray2
+        tabBarController.tabBar.tintColor = .black
+        tabBarController.tabBar.barTintColor = .green
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
