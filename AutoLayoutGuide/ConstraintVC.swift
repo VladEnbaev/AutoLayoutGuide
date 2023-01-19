@@ -11,13 +11,7 @@ class ConstraintVC: ParentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
-        
-        blackView.layer.cornerRadius = 40
-        greenView.layer.cornerRadius = otherViewsHeight / 2
-        redView.layer.cornerRadius = otherViewsHeight / 2
-        yellowView.layer.cornerRadius = otherViewsHeight / 2
     }
     
     override func layoutBlackView() {

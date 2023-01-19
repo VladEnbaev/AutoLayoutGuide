@@ -7,10 +7,12 @@
 
 import UIKit
 
-class VisualFormatLanguageVC : UIViewController{
+class VisualFormatLanguageVC : ParentViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
+    
+    
 }

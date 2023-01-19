@@ -22,7 +22,6 @@ class ParentViewController: UIViewController {
         blackViewWidth =  min(self.view.bounds.height, self.view.bounds.width) * 2/4
         
         otherViewsSeparator = 20
-        
         otherViewsHeight = (blackViewHeight/3 - 2*otherViewsSeparator)
         
         createViews()
@@ -44,10 +43,12 @@ class ParentViewController: UIViewController {
         for (index, myView) in viewsArray.enumerated(){
             myView.translatesAutoresizingMaskIntoConstraints = false
             myView.backgroundColor = colorsArray[index]
+            myView.layer.cornerRadius = otherViewsHeight / 2
             blackView.addSubview(myView)
         }
         blackView.backgroundColor = .black
         blackView.translatesAutoresizingMaskIntoConstraints = false
+        blackView.layer.cornerRadius = 40
         self.view.addSubview(blackView)
     }
     
